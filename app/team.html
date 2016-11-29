@@ -68,36 +68,34 @@
       <h1 id="text_team_name" class="text-center"> </h1>
       <h2 id="text_event_name" class= "text-center"></h2>
       <div>
-        <span>Preferred team size ({{minTeamSize}} - {{maxTeamSize}}): {{size}}</span>
-        <button ng-click="changeCurrentTeamSize(1)"><span class="glyphicon glyphicon-plus"></span></button>
-        <button ng-click="changeCurrentTeamSize(-1)"><span class="glyphicon glyphicon-minus"></span></button>
+        <span style="color: #5F9EA0; font-size: 25px; padding-bottom: 1px;font-family: Impact, Charcoal, sans-serif; padding-right: 10px">Preferred team size ({{minTeamSize}} - {{maxTeamSize}}):  {{size}}  </span>
+        <button type="button" class="btn btn-success" ng-click="changeCurrentTeamSize(1)">Add</button>
+        <button type="button" class="btn btn-danger" ng-click="changeCurrentTeamSize(-1)">Remove</button>
       </div>
       <div>
-        <span>Preferred  tags:</span>
+        <span style="color: #5F9EA0; font-size: 25px; padding-bottom: 10px;font-family: Impact, Charcoal, sans-serif; padding-right: 10px">Preferred  tags:</span>
         <ul>
-          <li ng-repeat="skill in skills">{{skill.$value}}</li>
-        <ul>
-      </div>
-      <div>
-        <span>Tags:</span>
-        <ul>
-          <li ng-repeat="teamSkill in teamSkills">{{teamSkill.$value}}</li>
+          <li ng-repeat="skill in skills" style="color: #00008B; font-size: 25px; padding-bottom: 1px;font-family: Impact, Charcoal, sans-serif; padding-right: 10px">{{skill.$value}}</li>
         <ul>
       </div>
+
       <form>
         <md-input-container>
           <label>Preferred tags</label>
           <input ng-model="skillInput">
         </md-input-container>
         
-        <md-button ng-click="addSkill()" class="md-raised">Add Skill</md-button>
+        
+        <button type="button" class="btn btn-info" ng-click="addSkill()">Add Tag</button>
       </form>
 
-      <p>Team members ({{currentTeamSize}}):</p>
-      <button ng-repeat="member in members" ng-click="removeMember(member)">{{member.name}}</button>
+      <p style="color: #5F9EA0; font-size: 25px; padding-bottom: 10px;font-family: Impact, Charcoal, sans-serif; padding-right: 10px">Team members ({{currentTeamSize}}):</p>
+      <p style="color: #00008B; font-size: 25px; padding-bottom: 10px;font-family: Impact, Charcoal, sans-serif; padding-right: 10px">Click to kick member!!</p>
+      <button style="color: #D2691E; font-size: 25px; padding-bottom: 10px;font-family: Impact, Charcoal, sans-serif; padding-right: 10px" ng-repeat="member in members" ng-click="removeMember(member)">{{member.name}}</button>
 
-      <p>Requests received:</p>
-      <button ng-repeat="requests in requests" ng-click="addMember(requests)">{{requests.name}}</button>
+      <p style="color: #5F9EA0; font-size: 25px; padding-bottom: 10px;font-family: Impact, Charcoal, sans-serif; padding-right: 10px">Requests received:</p>
+      <p style="color: #00008B; font-size: 25px; padding-bottom: 10px;font-family: Impact, Charcoal, sans-serif; padding-right: 10px">Click to accept member request!!</p>
+      <button style="color: #D2691E; font-size: 25px; padding-bottom: 0px;font-family: Impact, Charcoal, sans-serif; padding-right: 10px" ng-repeat="requests in requests" ng-click="addMember(requests)">{{requests.name}}</button>
     </div></div></div></div>
 
   <!-- /.container -->
