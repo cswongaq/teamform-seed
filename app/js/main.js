@@ -51,7 +51,7 @@ angular.module("indx-app", ["firebase", "ngMaterial"])
 .controller("IndxCtlr", function($scope, $firebaseObject, $firebaseArray, $window, $mdDialog) {
     initializeFirebase();
 
-
+    
     /* Facebook Authentication */
     var pvidr = new firebase.auth.FacebookAuthProvider();
 
@@ -76,6 +76,7 @@ angular.module("indx-app", ["firebase", "ngMaterial"])
     $scope.login = function() {
         firebase.auth().signInWithRedirect(pvidr);
 //        window.alert("Wellcome! "+user.displayName);
+
     };
     // logout function
     $scope.logout = function() {
@@ -102,9 +103,17 @@ angular.module("indx-app", ["firebase", "ngMaterial"])
 
             userRef.update({name: user.displayName});
 
- //           if(user.skills==undefined){
-                userRef.update({skills: "dummy"});
-//            }
+//            var skillarray=[];
+            userRef.child("skills").once('value', function(snapshot) {
+                var exists = (snapshot.val() !==null);
+                if (exists==undefined){
+                    userRef.update({skills: "dummy"});
+                    window.alert("not exist");
+                }
+            });
+            // if(snapshot==undefined){
+            //     userRef.update({skills: "dummy"});
+            // }
 
             // refresh the scope
             $scope.$apply(function() {
@@ -166,6 +175,6 @@ angular.module("indx-app", ["firebase", "ngMaterial"])
 })
 .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-    .primaryPalette('blue')
-    .accentPalette('pink');
+    .primaryPalette('red')
+    .accentPalette('blue');
 });
